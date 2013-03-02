@@ -15,6 +15,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 
   gem 'guard-rspec'
+  gem 'spork'
 end
 
 group :development do
