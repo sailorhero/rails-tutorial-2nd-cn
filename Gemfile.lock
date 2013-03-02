@@ -70,6 +70,10 @@ GEM
     guard-rspec (2.4.1)
       guard (>= 1.1)
       rspec (~> 2.11)
+    guard-spork (1.5.0)
+      childprocess (>= 0.2.3)
+      guard (>= 1.1)
+      spork (>= 0.8.4)
     hike (1.2.1)
     i18n (0.6.2)
     journey (1.0.4)
@@ -195,6 +199,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   factory_girl_rails
   guard-rspec
+  guard-spork
   jquery-rails
   pg
   pry
