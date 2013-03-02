@@ -1,5 +1,8 @@
 # “[Ruby on Rails Tutorial 原书第二版][1]”的例子程序
 
+这是一个Rails示例程序，英文原版参见[*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/)
+by [Michael Hartl](http://michaelhartl.com/).
+
 ## Ruby on Rails Tutorial 原书第二版,内容简介
 ### 第一章 从零到部署
 ### 第二章 演示程序
