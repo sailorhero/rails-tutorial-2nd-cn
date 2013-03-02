@@ -13,6 +13,8 @@ group :development, :test do
   gem 'thin'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+
+  gem 'guard-rspec'
 end
 
 group :development do
@@ -20,6 +22,11 @@ end
 
 group :test do
   gem 'capybara'
+
+  gem "rb-fchange", "~> 0.0.6"
+  gem 'rb-notifu', '~>0.0.4'
+  gem "wdm", "~> 0.1.0"
+  gem "win32console", "~> 1.3.2"
 end
 
 group :production do
