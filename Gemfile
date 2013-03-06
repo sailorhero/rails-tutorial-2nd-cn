@@ -18,6 +18,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'spork'
   gem 'guard-spork'
+
+  gem 'simplecov'
 end
 
 group :development do
