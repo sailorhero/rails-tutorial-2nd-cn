@@ -7,7 +7,7 @@ describe "StaticPages" do
     it {should have_content('Sample App')}
     it {should have_selector('h1', :text => 'Sample App')}
     it {should have_selector(:css ,"title")}
-    it {find('title').native.text.should have_content("Ruby on Rails Tutorial Sample App | Home") }
+    it {find('title').native.text.should have_content(full_title("Home")) }
     it "should have the right links on the layout" do
       visit root_path
       click_link "About"
@@ -29,7 +29,7 @@ describe "StaticPages" do
     subject{page}
     it { should have_content('Help')}
     it { should have_selector('title',:count => 1) }
-    it { find('title').native.text.should have_content("Ruby on Rails Tutorial Sample App | Help")}
+    it { find('title').native.text.should have_content(full_title(" Help"))}
     
   end
 
@@ -37,13 +37,13 @@ describe "StaticPages" do
     before {visit about_path}
     subject{page}
     it {should have_content('About Us')}
-    it {find('title').native.text.should have_content("Ruby on Rails Tutorial Sample App | About Us")}
+    it {find('title').native.text.should have_content(full_title(" About Us"))}
   end
 
   describe 'Contact page' do
     before { visit contact_path }
     subject { page}
     it { should have_selector('h1','Contract')}
-    it { find('title').native.text.should have_content("Ruby on Rails Tutorial Sample App | Contact")}
+    it { find('title').native.text.should have_content(full_title("Contact"))}
   end
 end
