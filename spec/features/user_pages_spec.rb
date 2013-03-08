@@ -1,3 +1,4 @@
+# --encoding: utf-8 --
 require 'spec_helper'
 
 describe "UserPages" do
@@ -25,6 +26,14 @@ describe "UserPages" do
 
       it "should create a user" do
         expect{click_button submit}.to change(User,:count).by(1)
+      end
+
+      describe "after saving the user" do
+        before { click_button submit }
+        let(:user){User.find_by_email('user@example.com')}
+
+        it {should have_selector("h1",text:user.name)}
+        it {should have_selector("div.alert-success",text: "欢迎")}
       end
     end
   end
