@@ -36,6 +36,8 @@ group :test do
   gem 'rb-notifu', '~>0.0.4'
   gem "wdm", "~> 0.1.0"
   gem "win32console", "~> 1.3.2"
+
+  gem 'factory_girl_rails'
 end
 
 group :production do

@@ -1,7 +1,9 @@
 RailsTutorial2ndCn::Application.routes.draw do
 
   root to: 'static_pages#home'
-  get "users/new"
+  
+  resources :users
+
   match '/signup', to: 'users#new'
 
   match '/help',    to: 'static_pages#help'
