@@ -48,4 +48,39 @@ describe "UserPages" do
     it { should have_selector('h1',    text: user.name) }
     it { find('title').native.text.should have_content(user.name)}
   end
+
+  describe "编辑页面" do
+    let(:user) { FactoryGirl.create(:user)}
+    before { visit edit_user_path(user) }
+
+    describe "编辑页面显示" do
+      it { should have_selector('h1','编辑个人信息')}
+      it { find('title').native.text.should have_content("编辑个人信息")}
+      it { should have_link('change',href: 'http://gravatar.com/emails')}
+    end
+
+    describe "更新数据无效" do
+      before { click_button "保存"}
+      it { should have_content('error')}
+    end
+
+    describe "更新数据有效" do
+      let(:new_name ) { "New User"}
+      let(:new_email) { "new@example.com"}
+
+      before do
+        fill_in "user_name",   with: new_name
+        fill_in "user_email",  with: new_email
+        fill_in "user_password",   with: user.password
+        fill_in "user_password_confirmation", with: user.password
+        click_button "保存"
+      end
+
+      it { find('title').native.text.should have_content(new_name) }
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Sign out', href: signout_path) }
+      specify { user.reload.name.should == new_name }
+      specify { user.reload.email.should == new_email }
+    end
+  end
 end
