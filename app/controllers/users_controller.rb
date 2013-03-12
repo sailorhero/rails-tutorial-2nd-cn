@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       #成功保存后的处理
+      sign_in @user
       flash[:success] = "欢迎登录Sample App!"
       redirect_to @user
     else

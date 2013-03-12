@@ -34,6 +34,8 @@ describe "UserPages" do
 
         it {should have_selector("h1",text:user.name)}
         it {should have_selector("div.alert-success",text: "欢迎")}
+
+        it {should have_link('Sign out')}
       end
     end
   end
