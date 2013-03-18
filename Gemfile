@@ -16,7 +16,6 @@ group :development, :test do
   gem 'pry-nav'
   gem 'thin'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
 
   gem 'guard-rspec'
   gem 'spork'

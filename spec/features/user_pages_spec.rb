@@ -51,7 +51,10 @@ describe "UserPages" do
 
   describe "编辑页面" do
     let(:user) { FactoryGirl.create(:user)}
-    before { visit edit_user_path(user) }
+    before do
+      sign_in user
+      visit edit_user_path(user) 
+    end
 
     describe "编辑页面显示" do
       it { should have_selector('h1','编辑个人信息')}

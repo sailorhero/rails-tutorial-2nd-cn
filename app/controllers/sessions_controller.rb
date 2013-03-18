@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       # Sign the user in and redirect to the user's show page.
       flash[:notice] = "用户#{user.name}成功登录."
       sign_in user
-      redirect_to user
+       redirect_back_or user
     else
       # Create an error message and re-render the signin form.
       flash.now[:error] = "无效的Email地址或口令."
