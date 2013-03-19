@@ -33,10 +33,12 @@ describe "Authentication" do
       before { valid_signin(user)}
 
       it {should have_selector('h1',text:user.name)}
+      it {should have_link('Users', href:users_path)}
       it {should have_link('Profile', href:user_path(user))}
-      it {should have_link('Sign out', href:signout_path)}
-      it {should_not have_link('Sign in', href:signin_path)}
       it {should have_link('Settings',href:edit_user_path(user))}
+      it {should have_link('Sign out', href:signout_path)}
+
+      it {should_not have_link('Sign in', href:signin_path)}
 
       describe "退出登录" do
         before { click_link "Sign out"}
@@ -53,9 +55,13 @@ describe "Authentication" do
         describe "访问编辑Profile页面" do
           before{ visit edit_user_path(user)}
 
-          it { should have_selector('h1',"Sign in")}
+          it { current_path.should == signin_path}
         end
 
+        describe "访问用户列表页面" do
+          before {visit users_path}
+          it { current_path.should == signin_path}
+        end
         #使用capybara 2.0,不能使用rspec-rails的put方法，无法直接访问Update。 
         #describe "提交Update操作" do    
         #   before do 
