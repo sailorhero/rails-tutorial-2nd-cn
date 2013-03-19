@@ -99,7 +99,7 @@ describe "UserPages" do
 
     it { current_path.should == users_path }
     it { should have_selector('h1',"所有用户")}
-    it "分页测试" do
+    describe "分页测试" do
       it { should have_selector('div.pagination')}
       it "should list each user" do
         User.paginate(page:1).each do |user|
@@ -107,5 +107,26 @@ describe "UserPages" do
         end
       end
     end
+
+    describe "删除链接" do
+      it { should_not have_link('删除')}
+
+      describe "作为管理员" do
+        let(:admin){FactoryGirl.create(:admin)}
+
+        before do
+          sign_in admin
+          visit users_path
+        end
+
+        it {should have_link('删除',href:user_path(User.first))}
+        it "should be able to delete another user" do
+          expect{ click_link "删除"}.to change(User,:count).by(-1)
+        end
+
+        it {should_not have_link("删除",href:user_path(admin))}
+      end
+    end
+
   end
 end

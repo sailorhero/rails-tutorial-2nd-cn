@@ -1,0 +1,9 @@
+<!-- encoding : utf-8 -->
+<li>
+  <%= gravatar_for user, size: 52 %>
+  <%= link_to user.name, user %>
+  <% if (current_user.admin?) && (!current_user?(user)) %>
+    | <%= link_to "删除",user , method: :delete,confirem:"确认删除？" %>
+    <!--浏览器不能发送 DELETE 请求，Rails 通过 JavaScript 进行模拟的。也就是说，如果用户禁用了 JavaScript，那么删除用户的链接就不可用了-->
+  <% end %>
+</li>
