@@ -121,7 +121,7 @@ describe "UserPages" do
 
         it {should have_link('删除',href:user_path(User.first))}
         it "should be able to delete another user" do
-          expect{ click_link "删除"}.to change(User,:count).by(-1)
+          expect{ first(:link, "删除").click}.to change(User,:count).by(-1)
         end
 
         it {should_not have_link("删除",href:user_path(admin))}
