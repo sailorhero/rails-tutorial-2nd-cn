@@ -86,20 +86,25 @@ describe "UserPages" do
       specify { user.reload.email.should == new_email }
     end
   end
+  
 
+  before(:all) { 30.times { FactoryGirl.create(:user) } }
+  after(:all) { User.delete_all }
   describe "index" do
-    before do
-      sign_in FactoryGirl.create(:user)
-      FactoryGirl.create(:user,name:"Bob",email:"bob@example.com")
-      FactoryGirl.create(:user,name:"Ben",email:"ben@example.com")
+    let(:user) { FactoryGirl.create(:user) }
+    before(:each) do
+      sign_in user
       visit users_path
     end
 
     it { current_path.should == users_path }
     it { should have_selector('h1',"所有用户")}
-    it "should list eache user" do
-      User.all.each do |user|
-        page.should have_selector('li',text:user.name)
+    it "分页测试" do
+      it { should have_selector('div.pagination')}
+      it "should list each user" do
+        User.paginate(page:1).each do |user|
+          page.should have_selector('li',text:user.name)
+        end
       end
     end
   end

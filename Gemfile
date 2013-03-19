@@ -1,3 +1,4 @@
+# encoding : utf-8
 #source 'https://rubygems.org'
 source 'http://ruby.taobao.org'
 
@@ -6,6 +7,9 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 gem 'bcrypt-ruby'
+
+gem 'will_paginate'              #
+gem 'bootstrap-will_paginate'    #作用是设置 willpaginate 使用 Bootstrap 中的分页样式
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -22,6 +26,8 @@ group :development, :test do
   gem 'guard-spork'
 
   gem 'simplecov'
+
+  gem 'faker'   #使用这个 gem，我们可以使用半真实的名字和 Email 地址创建示例用户
 end
 
 group :development do
